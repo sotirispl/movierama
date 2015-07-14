@@ -1,0 +1,38 @@
+<%= form_for(@movie,  :html => { :multipart => true }) do |f| %>
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @movie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field fileupload">
+    <%= f.file_field :image %>
+  </div>
+
+  <div style="clear:both"></div>
+  
+  <div class="field">
+    <%= f.text_field :title , :required => true, :placeholder => "Title" %>
+  </div>
+
+  <div style="clear:both"></div>
+  
+  
+  <div class="field textarea-movie col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <%= f.text_area :description, :required => true, :placeholder => "Description" %>
+  </div>
+  <div class="actions-container">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <div class="back-link">
+      <%= link_to 'Back', movies_path %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,404 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans');
+body {
+	color: #000000;
+    font-family: Open Sans,sans-serif;
+    font-weight: 300;
+    height: 100%;
+    margin: auto;
+}
+
+/*header*/
+.header {
+	background: #262b37 none repeat scroll 0 0;
+	color: #c3c8d6;
+	height: 50px;
+	z-index: 15;
+	position: fixed;    
+	top: 0;
+    width: 100%;
+}
+.logo {
+	float: left;
+    font-size: 26px;
+    height: 50px;
+    left: 20px;
+    line-height: 15px;
+    position: relative;
+    top: 15px;
+}
+.logo a {
+    color: #c3c8d6;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+a.user-menu {
+	color: #c3c8d6;
+    float: right;
+    font-size: 2.5em;
+    margin-right: 20px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+a.user-menu:hover {
+	text-decoration: none;
+}
+
+div.user-menu-container {
+    display: none;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    position: relative;
+    top: 52px;
+    right: -20px;
+    float: right;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #262b37;
+}
+ul.user-header {
+	float: right;
+    list-style-type: none;
+    position: relative;
+    right:-58px;
+    top:58px;
+	background: #262b37 none repeat scroll 0 0;
+    padding: 0;
+    border-radius : 10px;
+}
+
+ul.user-header li {
+    padding:5px 35px;
+    text-decoration:none;
+}
+
+ul.user-header li.last-item {
+    border-top-color:#C3C8D6;
+    border-top-style:solid;
+    border-top-width:1px;    
+}
+
+ul.user-header li a {
+    color: #c3c8d6;
+}
+
+ul.user-header li a:hover {
+    text-decoration: none;
+}
+
+/*toolbar*/
+.main {
+	position: relative;
+	top: 50px;
+}
+.toolbar {
+    background-color: #00BDBD;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+.toolbar a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.sort-by {
+    float: left;
+}
+.new-movie-button, .show-all-movies {
+    margin-left: 5px;
+    float: right;
+}
+.separator {
+    display: inline-block;
+    color: #ffffff;
+    float: right;
+    margin-left: 5px;
+}
+
+/*movie-list*/
+ul.movie-list {
+	display:block;
+	list-style-type: none;
+	padding: 0;
+}
+li.movie-item {
+	cursor:pointer;
+	display:block;
+	margin: 0px;
+	padding: 5px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+div.movie-image {
+	background: #eeeeee none repeat scroll 0 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 300px;
+    overflow: hidden;
+    padding: 10px;
+    border-bottom: 10px solid #eeeeee;
+}
+div.movie-image > img {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+div.movie-header, div.movie-reviews-details, div.movie-already-reviewed{
+	background: #ff675f none repeat scroll 0 0;
+	color: #ffffff;
+	font-weight: 300;
+	padding-top: 10px;
+}
+
+span.movie-title {
+	border-bottom: 1px solid #eeeeee;
+    display: block;
+    font-size: 1.2em;
+    line-height: 15px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+div.movie-description {
+	display: none;
+}
+.movie-reviews-details {
+    overflow: hidden;
+    padding-top: 10px;
+    width: 100%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.movie-likes, .movie-hates {
+	height:70px;
+	width: 70px;
+	margin-right: 5px;
+	display: inline-block;
+}
+.review-icon {
+	border: 1px solid;
+    border-radius: 15%;
+    font-size:1.8em;
+    height:37px;
+}
+
+a.reviewMovie .review-icon{
+	background-color: #ffffff;
+	color: #ff675f;
+}
+.fa-heart {
+    padding: 4px 26px 4px 9px;
+}
+.fa-flash {
+    padding: 4px 35px 4px 17px;
+}
+.like-counter {
+	font-family: Open Sans,sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    left: 41px;
+    position: absolute;
+    top: 5px;
+    z-index: 10;	
+}
+.hate-counter {
+	font-family: Open Sans,sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    left: 38px;
+    position: absolute;
+    top: 5px;
+    z-index: 10;	
+}
+div.movie-already-reviewed {
+	border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
+    opacity: 0.8;
+    padding: 0;
+    position: absolute;
+    text-transform: uppercase;
+    width: 96.5%;
+}
+a.delete-review {
+	color: #ffffff;
+    display: block;
+    font-size: 1.2em;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: relative;
+    text-decoration: none;
+}
+div.movie-posted-by {
+	display: block;
+    padding-top: 10px;
+    width: 100%;
+}
+div.movie-posted-by a {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-decoration: underline;
+	color: #ffffff;
+}
+
+/*user*/
+.user-registration, .movie-creation {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 20px;
+    text-align: center
+}
+.user-register-header {
+    font-size:2em;
+    line-height:38px;
+    position:relative;
+    text-align:center;
+    text-transform:uppercase;
+    width:100%;
+    position:relative;
+    top: 20px;
+    color: #FF675F;
+    padding-bottom: 40px;
+}
+.user-registration .field, .movie-creation .field {
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.user-registration .actions, .movie-creation .actions {
+    padding-left: 20px;
+    display: inline-block;
+}
+.float-right {
+    float: right;
+}
+.user-registration input, .movie-creation input, .movie-creation .field textarea, .fileupload-title {
+    background:none 0 0 repeat scroll #FF675F;
+    border:medium none;
+    color:#ffffff;
+    font-style:italic;
+    margin-bottom:30px;
+    margin-right:3%;
+    outline:none medium;
+    padding:15px 30px;
+}
+.movie-creation .field textarea {
+    height:100px;
+    margin-right: 0;
+}
+
+.user-registration .actions input, .movie-creation .actions input{
+    background-color: #262B37;
+}
+
+.user-registration .back-link, .movie-creation .back-link{
+    display: inline-block;
+    background-color: #262B37;
+    border:medium none;
+    
+    font-style:italic;
+    margin-bottom:30px;
+    margin-right:3%;
+    outline:none medium;
+    width: 90px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.user-registration .back-link a, .movie-creation .back-link a{
+    color:#ffffff;
+    height: 30px;
+    padding:15px 30px;
+}
+.user-registration .back-link a:hover, .movie-creation .back-link a:hover {
+    text-decoration: none;
+}
+.user-registration .back-link, .movie-creation .back-link {
+    width: 100px;
+}
+.user-registration .check-box {
+    display: inline-block;
+    position: relative;
+}
+.user-registration .center-content, .movie-creation .center-content {
+    display: block;
+    text-align: center;
+}
+.user-registration .check-box input {
+    margin-right: 0;
+}
+.field-info {
+    display: block;
+    position: absolute;
+    font-size: 0.85em;
+    margin-top: -30px;
+}
+*::-webkit-input-placeholder {
+    color:#ffffff;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color:#ffffff;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color:#ffffff;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color:#ffffff;
+}
+
+/*notice*/
+p#notice {
+    display: none;
+}
+
+/*modal*/
+.modal-body {
+    display: table;
+}
+.image-modal {
+    max-width: 40%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    padding-right: 20px;
+    border-right: 1px solid #eeeeee;
+}
+.image-modal img {
+    width: 100%;
+    position: relative;
+}
+.description-modal {
+    display: inline-block;
+    float: left;
+    width: 40%;
+    padding-left: 20px;
+}
+.more-info-btn {
+    font-size: 1em;
+    padding: 7px 30px;
+    color: #ff675f;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-top: 10px;    
+}
+.more-info-btn:hover{
+    color: #ffffff;
+    background-color: #ff675f;
+    border: 1px solid #ffffff;   
+}

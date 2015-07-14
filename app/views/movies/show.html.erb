@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @movie.image.url(:thumb) %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @movie.user.email %>
+</p>
+
+<%= link_to 'Back', movies_path %>

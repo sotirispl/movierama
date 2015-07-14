@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+  <%= render 'toolbar' %>
+  <div class="container">
+            
+  <ul class=" movie-list">
+    <% @movies.each do |movie| %>
+      <li class="movie-item col-xs-6 col-sm-4 col-md-3 col-lg-3">
+          <div id="reviewMovie<%=movie.id%>" class="movie-already-reviewed"><%= show_review_label(movie) %></div>
+          <div class="movie-image"><%= image_tag movie.image.url(:medium), :class=>'image-responsive' %></div>
+
+          <div class="movie-header">
+           
+            <span class="movie-title"><%= movie.title %></span>
+            <div class="movie-post-details">
+                <% user_name = (user_signed_in? && movie.user_id == current_user.id) ? "You" : movie.user.name %>
+                <div class="movie-posted-by">
+                  <%= link_to user_name, {:controller => "movies", :action => "index", :filter => movie.user_id} %>
+                </div>
+                <div class="movie-time-ago"><%= time_ago_in_words(movie.created_at - 1).gsub('about','')+" ago" %></div>
+
+                <button type="button" class="more-info-btn btn btn-primary btn-sm fa fa-info-circle" data-toggle="modal" data-target="#movie-description-<%=movie.id%>"> More Info</button>
+            </div>
+          </div>
+
+          
+
+          <% #if user_signed_in? %>
+            <div class="movie-reviews-details">
+              <div class="movie-likes">
+                <% if user_signed_in? && show_review_action(movie, true) %>
+                  <a id="linkLike<%=movie.id%>" class="reviewMovie" data-id="<%=movie.id%>" data-status="true" data-method="<%=update_review(movie, true)%>" href="#">
+                <% end %>
+                <span class="fa fa-heart review-icon" id="likesContainer<%=movie.id%>">
+                    <span class="like-counter" id="likeReview<%=movie.id%>"><%= movie.likes %>
+                    </span>
+                  </span>
+                <% if user_signed_in? && show_review_action(movie, true) %>
+                  </a>
+                <% end %>
+              </div> 
+              <div class="movie-hates">
+                <% if user_signed_in? && show_review_action(movie, false) %>
+                  <a id="linkHate<%=movie.id%>"  class="reviewMovie" data-id="<%=movie.id%>" data-status="false" data-method="<%=update_review(movie, false)%>" href="#">
+                <% end %>
+                <span id="hatesContainer<%=movie.id%>" class="fa fa-flash review-icon">
+                <span class="hate-counter" id="hateReview<%=movie.id%>"><%= movie.hates %></span>
+              </span>
+                <% if user_signed_in? &&  show_review_action(movie, false) %>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          <% #end %>
+          
+          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="document" id="movie-description-<%=movie.id%>" aria-labelledby="<%=movie.title%>">
+
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel"><%=movie.title%></h4>
+                </div>
+                <div class="modal-body">
+                  
+                  <div class="image-modal">
+                    <%= image_tag movie.image.url(:medium) %>
+                  </div>
+                  <div class="description-modal">
+                    <%= movie.description %>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  
+                </div>
+            </div>
+
+          </div>
+      </li>
+        
+    <% end %>
+
+</ul>
+</div>

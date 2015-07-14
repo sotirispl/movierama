@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MovieRama</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<section class="header">
+<div class="logo"><%= link_to "MovieRama", "/" %></div>
+<a class="fa fa-user user-menu"> </a>
+<div class="user-menu-container">
+	<div class="triangle"></div>
+	<ul class="user-header">
+		<% if user_signed_in? %>
+			<li><%= link_to current_user.name, edit_user_registration_path %></li>
+			<li class="last-item"><%= link_to 'Log out', logout_path %></li>
+		<% else %>
+			<li><%= link_to "Register", register_path %> </li>
+			<li class="last-item"><%= link_to "Log in", login_path %></li>
+		<% end %>	
+	</ul>
+</div>
+</section>
+
+<section class="main">
+<%= yield %>
+</section>
+</body>
+</html>

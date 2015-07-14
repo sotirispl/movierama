@@ -1,0 +1,36 @@
+<div class="container">
+<div class="toolbar">
+    <div class="sort-by">
+      Sort by:
+      <% if params.has_key?(:filter) %>
+        <%= link_to "Likes", {:controller => "movies", :action => "index", :order => 'likes', :filter => params[:filter] }%>
+        |
+        <%= link_to "Hates", {:controller => "movies", :action => "index", :order => 'hates', :filter => params[:filter] }%>
+        |
+        <%= link_to "Date", {:controller => "movies", :action => "index", :order => 'date', :filter => params[:filter] }%>
+      <% else %>
+        <%= link_to "Likes", {:controller => "movies", :action => "index", :order => 'likes' }%>
+        |
+        <%= link_to "Hates", {:controller => "movies", :action => "index", :order => 'hates' }%>
+        |
+        <%= link_to "Date", {:controller => "movies", :action => "index", :order => 'date' }%>
+      <% end %>
+      
+    </div>
+
+    <% if params.has_key?(:filter) %>
+      
+      <div class="show-all-movies">
+        <% if params.has_key?(:order) %>
+          <%= link_to "All movies", {:controller => "movies", :action => "index", :order => params[:order] }%>
+        <% else %>
+          <%= link_to "All movies", {:controller => "movies", :action => "index" }%>
+        <% end %>
+      </div>
+      <span class="separator">|</span>
+    <% end %>
+    <% if user_signed_in? %>
+      <div class="new-movie-button"><%= link_to "New Movie", new_movie_path %></div>
+    <% end %>
+  </div>
+</div>
